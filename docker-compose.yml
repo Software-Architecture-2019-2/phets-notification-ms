@@ -1,0 +1,15 @@
+version: '3'
+services:
+  sa_notification_db:
+    image: postgres
+    volumes:
+      - ./tmp/sa_notification_db:/var/lib/postgresql/data
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 4004 -b '0.0.0.0'"
+    volumes:
+      - .:/sa_notification_ms
+    ports:
+      - "4004:4004"
+    depends_on:
+      - sa_notification_db
