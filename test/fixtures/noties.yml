@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notification_id: MyString
+  user_id: MyString
+  notification_body: MyText
+  notification_state: 1
+  notification_type: 1
+
+two:
+  notification_id: MyString
+  user_id: MyString
+  notification_body: MyText
+  notification_state: 1
+  notification_type: 1
