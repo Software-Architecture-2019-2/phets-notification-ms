@@ -4,6 +4,8 @@ services:
     image: postgres
     volumes:
       - ./tmp/sa_notification_db:/var/lib/postgresql/data
+    ports:
+      - "3004:3004"
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 4004 -b '0.0.0.0'"

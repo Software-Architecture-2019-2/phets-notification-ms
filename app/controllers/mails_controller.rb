@@ -1,6 +1,9 @@
 class MailsController < ApplicationController
   def send_mail
-    UserMailer.new_mail(email_params)
+    @email = Mail.new(email_params)
+    @email.save
+    MailMailer.sample_email(@email).deliver
+    
   end
 
   private

@@ -1,7 +1,8 @@
 class UserMailer < ApplicationMailer
 
-  def new_mail(dates)
-    @body = dates.body
-    mail(:to => dates.email, :subject => dates.subject)
+  def new_mail(email)
+    @mail = email
+    mail(to: @mail.user_mail, subject: @mail.mail_subject)
+
   end
 end

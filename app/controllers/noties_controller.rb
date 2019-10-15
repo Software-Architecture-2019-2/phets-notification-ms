@@ -3,27 +3,38 @@ class NotiesController < ApplicationController
   def user_notification
     list_notification = Noty.where(user_id: params[:id])
     if !list_notification.nil?
-      render json: { status: 'Notifications', data: list_notification }
+      render json: list_notification
     else
-      render json: { status: 'No notifications'}
+      render json: 'No exists'
     end
   end
 
   def show
     notification = Noty.find(params[:id])
     if !notification.nil?
-      render json: { status: 'Available', data: notification }
+      render json: notification 
     else
-      render json: { status: 'Not available'}
+      render json: {data: 'Not available'}
     end
   end
 
   def create
     noty = Noty.new(news_params)
     if noty.save
-      render json: { status: 'SUCCESS', message: 'loaded the post', data: noty }
+      noty.update(notification_id: noty.id, notification_state: 0)
+      render json: noty 
     else
-      render json: { status: 'ERROR', message: 'post not saved', data: noty.errors }
+      render json: noty.errors
+    end
+  end
+
+  def update_state
+    noty = Noty.find(params[:id])
+    if !noty.nil?
+      noty.update(notification_state: 1)
+      render json: noty
+    else
+      render json: noty.errors
     end
   end
 
@@ -31,9 +42,9 @@ class NotiesController < ApplicationController
     notification = Noty.find(params[:id])
     if !notification.nil?
       notification.destroy
-      render json: { status: 'SUCCESS'}
+      render json: {"data": "Deleted successfully"}
     else
-      render json: { status: 'ERROR'}
+      render json: {"data": "Not exists"}
     end
   end
 
