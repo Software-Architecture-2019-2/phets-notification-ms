@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :emails, only: [:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/notifications/user_notification/:id', to: 'noties#user_notification'
   get '/send_mail', to: 'mails#send_mail'

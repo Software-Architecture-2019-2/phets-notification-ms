@@ -38,13 +38,12 @@ Rails.application.configure do
   host = 'phets.com' #replace with your own url
   config.action_mailer.default_url_options = { host: host }
 
-  # SMTP settings for gmail
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :user_name            => <gmail_username>,
-    :password             => <gmail_password>,
-    :authentication       => "plain",
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV ["GMAIL_USERNAME"],
+    :password => ENV ["GMAIL_PASSWORD"],
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :authentication => :plain,
     :enable_starttls_auto => true
   }
 
