@@ -1,11 +1,11 @@
 FROM ruby:2.5
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
-RUN mkdir /sa_notification_ms
-WORKDIR /sa_notification_ms
-COPY Gemfile /sa_notification_ms/Gemfile
-COPY Gemfile.lock /sa_notification_ms/Gemfile.lock
+RUN mkdir /phets-notification-ms
+WORKDIR /phets-notification-ms
+COPY Gemfile /phets-notification-ms/Gemfile
+COPY Gemfile.lock /phets-notification-ms/Gemfile.lock
 RUN bundle install
-COPY . /sa_notification_ms
+COPY . /phets-notification-ms
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
