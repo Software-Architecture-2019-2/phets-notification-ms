@@ -12,6 +12,7 @@ COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 4004
+RUN script/server -p 4004
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
