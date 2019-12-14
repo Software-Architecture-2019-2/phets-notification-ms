@@ -1,9 +1,9 @@
 version: "3"
 services:
-  phets-notification-db:
+  phets_notification_db:
     image: postgres
     volumes:
-      - phets-notification-db-volume:/var/lib/postgresql/data
+      - phets_notification_db-volume:/var/lib/postgresql/data
     ports:
       - "3004:5432"
   phets-notification-ms:
@@ -12,7 +12,7 @@ services:
     ports:
       - "4004:4004"
     depends_on:
-      - phets-notification-db
+      - phets_notification_db
 
 volumes:
-  phets-notification-db-volume:
+  phets_notification_db-volume:
