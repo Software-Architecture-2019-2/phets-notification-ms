@@ -17,7 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: phets_notification_db
+  host: phets-notification-db
   username: postgres
   password:
   pool: 5
