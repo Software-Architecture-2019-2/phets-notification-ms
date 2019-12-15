@@ -14,4 +14,4 @@ ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 4004
 
 # Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["rails", "server", "-b", "0.0.0.0", "-p", "4004"]
