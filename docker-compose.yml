@@ -1,18 +1,19 @@
 version: "3"
 services:
-  phets_notification_db:
-    image: postgres
+  phets-notification-db:
+    container_name: phets-notification-db
+    image: phets-notification-db
     volumes:
       - phets_notification_db-volume:/var/lib/postgresql/data
     ports:
       - "3004:5432"
   phets-notification-ms:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rake db:create db:migrate && bundle exec rails s -p 4004 -b '0.0.0.0'"
+    image: phets-notification-ms
     ports:
       - "4004:4004"
     depends_on:
-      - phets_notification_db
+      - phets-notification-db
 
 volumes:
   phets_notification_db-volume:
