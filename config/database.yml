@@ -21,6 +21,7 @@ default: &default
   username: postgres
   password:
   pool: 5
+  port: 3004
 
 development:
   <<: *default
@@ -42,7 +43,7 @@ development:
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  # port: 3004
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
